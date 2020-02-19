@@ -1,16 +1,16 @@
-#Digital WhatWhereWhen
+# Digital WhatWhereWhen
 
-##Library Choices
+## Library Choices
  - [Ionic](https://ionicframework.com/docs) with [React.js](https://reactjs.org/) and [Cordova](https://cordova.apache.org/)
 
-##About
+## About
 As of first commit, this project was created with the following Ionic CLI invocation:
 
 `ionic start digital-whatwherewhen tabs --type=react`
 
 The ionic CLI is pretty cool; you should check it out.
 
-##What Next?
+## What Next?
 - Install redux
 - Create initial redux dummy JSON data payload
 - Modify tabs to match names of these proposed areas:
