@@ -10,6 +10,11 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+
+import createStore from './redux/createStore';
+
+import defaultState from './redux/defaultState.json';
+
 import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
@@ -33,6 +38,18 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+
+/* Redux app state */
+let cachedState = window.sessionStorage.getItem("digital-whatwherewhen-redux-store");
+const store = createStore(cachedState ? JSON.parse(cachedState) : defaultState);
+
+const saveState = () => {
+    window.sessionStorage.setItem("digital-whatwherewhen-redux-store", JSON.stringify(store.getState()));
+};
+
+store.subscribe(saveState);
+
+
 
 const App: React.FC = () => (
   <IonApp>
