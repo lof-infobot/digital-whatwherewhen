@@ -1,7 +1,7 @@
 # Digital WhatWhereWhen
 
 ## Library Choices
- - [Ionic](https://ionicframework.com/docs) with [React.js](https://reactjs.org/) and [Cordova](https://cordova.apache.org/)
+ - [Ionic](https://ionicframework.com/docs) with [React.js](https://reactjs.org/)
 
 ## About
 As of first commit, this project was created with the following Ionic CLI invocation:
