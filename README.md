@@ -13,7 +13,7 @@ The ionic CLI is pretty cool; you should check it out.
 ## What Next?
 - Install redux
 - Create initial redux dummy JSON data payload
-- Modify tabs to match names of these proposed areas:
+- Create Contents for each of the tabs:
   - *The Burn*: A tab for all general burn-related content (art grants, survival guide, etc)
   - *Events*: A browseable/searchable event listing, making the bulk of the digital WWW
   - *Map*: A pinch-zoomable static map showing locations of theme camps and portos
