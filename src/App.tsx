@@ -12,9 +12,9 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 
 import { flameOutline, mapOutline, calendarOutline } from 'ionicons/icons';
-import AboutBurnTab from './pages/AboutBurnTab';
-import EventsTab from './pages/EventsTab';
-import MapTab from './pages/MapTab';
+import AboutBurnTabContainer from './pages/AboutBurnTabContainer';
+import EventsTabContainer from './pages/EventsTabContainer';
+import MapTabContainer from './pages/MapTabContainer';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,11 +36,14 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 /* Redux app state */
+import { Provider } from 'react-redux';
 import createStore from './redux/createStore';
 import defaultState from './redux/defaultState.json';
 
 let cachedState = window.sessionStorage.getItem("digital-whatwherewhen-redux-store");
 const store = createStore(cachedState ? JSON.parse(cachedState) : defaultState);
+
+console.log('defaultState: ', defaultState);
 
 const saveState = () => {
     window.sessionStorage.setItem("digital-whatwherewhen-redux-store", JSON.stringify(store.getState()));
@@ -49,32 +52,34 @@ const saveState = () => {
 store.subscribe(saveState);
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/burn" component={AboutBurnTab} exact={true} />
-          <Route path="/events" component={EventsTab} exact={true} />
-          <Route path="/map" component={MapTab} />
-          <Route path="/" render={() => <Redirect to="/burn" />} exact={true} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="burn" href="/burn">
-            <IonIcon icon={flameOutline} />
-            <IonLabel>The Burn</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="events" href="/events">
-            <IonIcon icon={calendarOutline} />
-            <IonLabel>Events</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="map" href="/map">
-            <IonIcon icon={mapOutline} />
-            <IonLabel>Map</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+    <Provider store={store}>
+      <IonApp>
+        <IonReactRouter>
+          <IonTabs>
+            <IonRouterOutlet>
+              <Route path="/burn" component={AboutBurnTabContainer} exact={true} />
+              <Route path="/events" component={EventsTabContainer} exact={true} />
+              <Route path="/map" component={MapTabContainer} />
+              <Route path="/" render={() => <Redirect to="/burn" />} exact={true} />
+            </IonRouterOutlet>
+            <IonTabBar slot="bottom">
+              <IonTabButton tab="burn" href="/burn">
+                <IonIcon icon={flameOutline} />
+                <IonLabel>The Burn</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="events" href="/events">
+                <IonIcon icon={calendarOutline} />
+                <IonLabel>Events</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="map" href="/map">
+                <IonIcon icon={mapOutline} />
+                <IonLabel>Map</IonLabel>
+              </IonTabButton>
+            </IonTabBar>
+          </IonTabs>
+        </IonReactRouter>
+      </IonApp>
+    </Provider>
 );
 
 export default App;

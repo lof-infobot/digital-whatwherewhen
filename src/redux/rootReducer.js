@@ -2,8 +2,13 @@ import { combineReducers } from 'redux';
 import actionNames from './actionNames';
 import initialState from './defaultState';
 
+const content = ( state = {}, action ) => {
+    return state;
+};
+
 const appReducer = combineReducers({
-    // Combine imported reducers here
+    // Combine reducers here
+    content
 });
 
 const rootReducer = (state, action) => {
