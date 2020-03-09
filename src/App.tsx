@@ -11,10 +11,6 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
-import createStore from './redux/createStore';
-
-import defaultState from './redux/defaultState.json';
-
 import { flameOutline, mapOutline, calendarOutline } from 'ionicons/icons';
 import AboutBurnTab from './pages/AboutBurnTab';
 import EventsTab from './pages/EventsTab';
@@ -40,6 +36,9 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 /* Redux app state */
+import createStore from './redux/createStore';
+import defaultState from './redux/defaultState.json';
+
 let cachedState = window.sessionStorage.getItem("digital-whatwherewhen-redux-store");
 const store = createStore(cachedState ? JSON.parse(cachedState) : defaultState);
 
@@ -48,8 +47,6 @@ const saveState = () => {
 };
 
 store.subscribe(saveState);
-
-
 
 const App: React.FC = () => (
   <IonApp>
