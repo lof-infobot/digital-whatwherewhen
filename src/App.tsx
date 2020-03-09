@@ -12,9 +12,9 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 
 import { flameOutline, mapOutline, calendarOutline } from 'ionicons/icons';
-import AboutBurnTabContainer from './pages/AboutBurnTabContainer';
-import EventsTabContainer from './pages/EventsTabContainer';
-import MapTabContainer from './pages/MapTabContainer';
+import AboutBurnTabContainer from './pages/about/AboutBurnTabContainer';
+import EventsTabContainer from './pages/events/EventsTabContainer';
+import MapTabContainer from './pages/map/MapTabContainer';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -38,18 +38,7 @@ import './theme/variables.css';
 /* Redux app state */
 import { Provider } from 'react-redux';
 import createStore from './redux/createStore';
-import defaultState from './redux/defaultState.json';
-
-let cachedState = window.sessionStorage.getItem("digital-whatwherewhen-redux-store");
-const store = createStore(cachedState ? JSON.parse(cachedState) : defaultState);
-
-console.log('defaultState: ', defaultState);
-
-const saveState = () => {
-    window.sessionStorage.setItem("digital-whatwherewhen-redux-store", JSON.stringify(store.getState()));
-};
-
-store.subscribe(saveState);
+const store = createStore();
 
 const App: React.FC = () => (
     <Provider store={store}>

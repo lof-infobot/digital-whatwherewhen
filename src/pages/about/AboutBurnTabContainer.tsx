@@ -3,8 +3,12 @@ import AboutBurnTab from './AboutBurnTab';
 
 const mapStateToProps = (state:any, props:any) =>
     ({
-        // Use this convention to assign redux state to component properties:
-        // propName: state.reduxProperty
+        principles: state.content["01_Principles"],
+        survivalGuide: state.content["02_SurvivalGuide"],
+        soundPolicy: state.content["03_SoundPolicy"],
+        effigy: state.content["04_Effigy"],
+        artGrants: state.content["05_ArtGrants"],
+        artHonoraria: state.content["06_ArtHonoraria"]
     });
 
 const mapDispatchToProps = (dispatch:object, props:any) =>

@@ -1,21 +1,13 @@
 import { combineReducers } from 'redux';
-import actionNames from './actionNames';
-import initialState from './defaultState';
-
-const content = ( state = {}, action ) => {
-    return state;
-};
+import { content, constants } from './reducers';
 
 const appReducer = combineReducers({
     // Combine reducers here
-    content
+    content,
+    constants
 });
 
 const rootReducer = (state, action) => {
-    if(action.type === actionNames.RESET_STATE) {
-        state = initialState;
-    }
-
     return appReducer(state, action);
 }
 

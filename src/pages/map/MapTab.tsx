@@ -1,26 +1,26 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './EventsTab.css';
+import ExploreContainer from '../../components/ExploreContainer';
+import './MapTab.css';
 
-const EventsTab: React.FC = () => {
+const MapTab: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Events</IonTitle>
+          <IonTitle>Map</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Events</IonTitle>
+            <IonTitle size="large">Map</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Events page" description="A browseable/searchable event listing, making the bulk of the digital WWW" />
+        <ExploreContainer name="Map page" description="A pinch-zoomable static map showing locations of theme camps and portos" />
       </IonContent>
     </IonPage>
   );
 };
 
-export default EventsTab;
+export default MapTab;

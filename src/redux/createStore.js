@@ -3,9 +3,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
+import defaultContent from "./content.json";
+import constants from "./constants.json";
 
-export default (initialState) => {
-    return createStore(
+export default () => {
+    let cachedState = window.sessionStorage.getItem("digital-whatwherewhen-redux-store");
+    let initialState = cachedState ? JSON.parse(cachedState) : { content: defaultContent.content, constants };
+
+    let store = createStore(
         rootReducer,
         initialState,
         compose(
@@ -13,4 +18,10 @@ export default (initialState) => {
             window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
         )
     );
+
+    store.subscribe(() => {
+        window.sessionStorage.setItem("digital-whatwherewhen-redux-store", JSON.stringify(store.getState()));
+    });
+
+    return store;
 }
